@@ -1,0 +1,12 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu-18_04"
+  
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "ubuntu18-04"
+    vb.memory = "1024"
+    vb.cpus = 1
+  end
+  config.vm.hostname = "ubuntu18-04"
+  config.vm.synced_folder "./files/", "/home/vagrant/code"
+  config.vm.provision "shell", path: "install_script.sh"
+end
